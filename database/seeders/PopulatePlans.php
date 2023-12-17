@@ -8,9 +8,6 @@ use Illuminate\Database\Seeder;
 
 class PopulatePlans extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         Plan::create(['description' => 'BRONZE', 'limit' => 10]);
