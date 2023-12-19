@@ -9,5 +9,13 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    protected $table = 'exercices_test';
+    protected $fillable = ['description', 'user_id'];
+
+    protected $hidden = ['updated_at'];
+
+    // Relacionamento com User
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
