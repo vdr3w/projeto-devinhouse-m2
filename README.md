@@ -35,22 +35,37 @@ O projeto segue uma estrutura de camadas, dividido em models, controllers e rout
 ### Modelagem do Banco de Dados PostgreSQL
 
 Utilização do PostgreSQL para gerenciamento de dados. 
-
-❗❗❗❗❗❗❗❗❗(Inserir link ou imagem do modelo de dados, se disponível)
-
-❗![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/modelo_db.jpg)
+![App Screenshot](https://i.imgur.com/uRUpVp2.png)
 
 ### Cronograma e Organização
 
 Planejamento e execução do projeto de acordo com um cronograma estabelecido. 
+O projeto envolve o desenvolvimento de uma API Rest para a DevInGym usando Laravel e PostgreSQL, com foco em backend. A entrega final é em até 15 dias do início do prazo.
 
-❗❗❗❗❗❗❗❗❗(Inserir link do cronograma, se disponível)
+Etapas Principais:
+
+- Desenvolvimento de Backend: Implementação de várias funcionalidades, incluindo cadastro de usuários, gerenciamento de exercícios e estudantes, e exportação de dados em PDF.
+- Entrega: Submissão do código no GitHub (privado) e vídeo explicativo no Google Drive.
+- Avaliação: Baseada em vídeo explicativo, uso do GitHub, e desenvolvimento das funcionalidades requisitadas.
 
 ## 🏃‍♂️ Instruções para Execução do Projeto
 
-- Clone o repositório ❗❗❗(inserir URL do repositório).
-- Crie um banco de dados PostgreSQL chamado academia_api. ❗❗❗(inserir comando para criação do db).
+- Clone o repositório (https://github.com/vdr3w/projeto-devinhouse-m2).
+- Crie um banco de dados PostgreSQL chamado academia_api.
+  
+```
+docker run -d --name academia_api -e POSTGRESQL_PASSWORD=*** -e POSTGRESQL_USERNAME=admin -p 5432:5432 bitnami/postgresql:latest
+```
 - Configure o arquivo .env com as variáveis de ambiente.
+
+```
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=academia_api
+DB_USERNAME=admin
+DB_PASSWORD=***
+```
 - Execute os comandos para instalação e inicialização do servidor:
   
 ```
@@ -58,17 +73,11 @@ composer install
 php artisan serve
 ```
 
-## 🖥️ Demonstração da API 
-
-❗❗❗❗❗❗❗❗❗URL de demonstração da API: (inserir URL)
-
-❗![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/teste_rota.jpg)
-
-## 📚 Documentação da API
+## 🖥️📚 Documentação e Demonstração da API
 
 ### 🚥 Endpoints - 🏅 Rotas Usuários
 #### S01 - Cadastro de usuário 
-
+![CADASTRO](https://i.imgur.com/bJIWYIb.png)
 ```http
     POST /api/users
 ```
@@ -108,7 +117,8 @@ Após o cadastro bem-sucedido, o usuário receberá um email de boas-vindas cont
 
 ### 🚥 Endpoints - 🏋️‍♂️ Rotas de Login 
 #### S02 - Login
-
+![LOGIN](https://i.imgur.com/rX0vQmD.png)
+![LOGOUT](https://i.imgur.com/t9xVOmP.png)
 ```http
    POST /api/login
 ```
@@ -144,7 +154,7 @@ Resposta JSON exemplo
 ##
 ### 🚥 Endpoints - 🚴 Rotas de Dashboard
 #### S03 - Dashboard
-
+![DASHBOARD](https://i.imgur.com/QT6gEPf.png)
 ```http
   GET /api/dashboard
 ```
@@ -170,7 +180,7 @@ Resposta JSON exemplo (depende dos dados do usuário autenticado)
 ##
 ### 🚥 Endpoints - 🏊‍♀️ Rotas de Exercícios
 #### S04 - Cadastro de Exercícios
-
+![CADASTROEXERCICIO](https://i.imgur.com/tC2Fblk.png)
 ```http
    POST /api/exercises
 ```
