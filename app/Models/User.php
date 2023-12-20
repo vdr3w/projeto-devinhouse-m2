@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'date_birth',
+        'cpf',
+        'plan_id'
     ];
 
     /**
@@ -42,4 +45,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function plan() {
+    return $this->belongsTo(Plan::class, 'plan_id');
+}
+
+    public function students() {
+        return $this->hasMany(Student::class);
+    }
+
+    public function exercises() {
+        return $this->hasMany(Exercise::class);
+    }
 }
