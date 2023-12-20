@@ -602,6 +602,24 @@ Não há response no body em caso de sucesso, o PDF é enviado como download.
 
 ##
 #### 🏆 Projeto Avaliativo do Módulo 2 DEVinHouse[Zucchetti] - BACKEND
+
+### 🚀 Melhorias que podem ser aplicadas 🚀
+ 
+Possíveis Melhorias e Expansões para DEVinGYM API
+
+- Relatórios e Análises:
+Implementação de um sistema de geração de relatórios para fornecer análises detalhadas sobre a utilização da academia, frequência dos estudantes, etc..
+
+- Melhorias na Documentação da API:
+Aprimorar a documentação da API, utilizando ferramentas como Swagger, para oferecer uma documentação interativa.
+
+- Interface de Usuário/Administração:
+Desenvolvimento de uma interface web ou mobile para melhorar a experiência do usuário final e do administrador, tornando a interação com a API mais intuitiva e acessível.
+
+-Expansão de Funcionalidades:
+Adição de novas funcionalidades, como checklist nos exercicios que o estudante ja fez e acompanhamento do progresso físico dos estudantes.
+
+##
 ## Autor
 
 |        |                             |
