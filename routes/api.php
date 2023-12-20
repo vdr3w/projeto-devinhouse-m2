@@ -28,6 +28,10 @@ Route::get('students/{id}', [StudentController::class, 'show']);
 Route::delete('students/{id}', [StudentController::class, 'destroy']);
 Route::put('students/{id}', [StudentController::class, 'update']);
 Route::post('students', [StudentController::class, 'store'])->middleware('validateLimitStudents');
+//PDF
+Route::get('students/export/{id_do_estudante}', [StudentController::class, 'exportPDF']);
+
+
 
 //WORKOUTS
 Route::post('workouts', [WorkoutController::class, 'store']);

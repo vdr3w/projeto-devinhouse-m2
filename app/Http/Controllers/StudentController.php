@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Workout;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -165,4 +167,27 @@ public function index(Request $request)
 
         return response()->json($response, Response::HTTP_OK);
     }
+
+public function exportPDF($id_do_estudante)
+{
+    $student = Student::with('workouts')->find($id_do_estudante);
+
+    if (!$student) {
+        return response()->json(['error' => 'Estudante não encontrado'], Response::HTTP_NOT_FOUND);
+    }
+
+    // Consulta todos os workouts relacionados a este estudante
+    $workouts = Workout::where('student_id', $id_do_estudante)->get();
+
+    // Para fins de depuração, você pode exibir os treinos no log
+    foreach ($workouts as $workout) {
+        \Log::info('Dia: ' . $workout->day);
+        \Log::info('Descrição do Exercício: ' . $workout->exercise->description);
+        // Adicione mais informações relevantes aqui, conforme necessário
+    }
+
+    $pdf = Pdf::loadView('pdf.student', compact('student', 'workouts'));
+    return $pdf->download('treino-' . $student->name . '.pdf');
 }
+
+    }
