@@ -115,6 +115,8 @@ Request JSON exemplo
 
 Após o cadastro bem-sucedido, o usuário receberá um email de boas-vindas contendo o nome do usuário, descrição do plano assinado e limites do plano.
 
+![EMAILBOASVINDAS](https://i.imgur.com/G7Y4zSk.png)
+
 | Response Status | Descrição                |
 | :-------------- | :----------------------- |
 | `201`           | Sucesso                  |
@@ -504,8 +506,8 @@ Exemplo de Response:
     "neighborhood": "Centro",
     "city": "Belo Horizonte",
     "number": "789"
+    }
   }
-}
 
 ```
 
@@ -640,7 +642,7 @@ Não é necessário enviar parâmetros no body da requisição.
 Exemplo de Response:
 
 ```http
-    {
+{
   "id": 5,
   "name": "Carlos Pereira",
   "email": "carlos.pereira@example.com",
@@ -654,7 +656,7 @@ Exemplo de Response:
     "neighborhood": "Centro",
     "city": "Belo Horizonte",
     "number": "789"
-  }
+    }
 }
 
 ```
@@ -706,7 +708,7 @@ Adição de novas funcionalidades, como checklist nos exercicios que o estudante
 
 ##
 
-## Autor
+## Sobre Mim:
 
 |                                                                                                                                                                                                                   |                                                                              |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- |
