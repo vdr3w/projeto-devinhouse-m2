@@ -547,6 +547,42 @@ Exemplo de resposta:
 |  `404` | Estudante não encontrado|
 
 ##
+#### S13 - Listagem de um Estudante
+![LISTA1ESTUDANTE](https://i.imgur.com/6nF8Zmn.png)
+```http
+  GET /api/students/:id
+```
+
+Não é necessário enviar parâmetros no body da requisição.
+
+Exemplo de Response:
+```http
+    {
+  "id": 5,
+  "name": "Carlos Pereira",
+  "email": "carlos.pereira@example.com",
+  "date_birth": "1988-07-22",
+  "cpf": "555.666.777-88",
+  "contact": "(31) 99876-5432",
+  "address": {
+    "cep": "30.140-110",
+    "street": "Rua da Bahia",
+    "state": "MG",
+    "neighborhood": "Centro",
+    "city": "Belo Horizonte",
+    "number": "789"
+  }
+}
+
+```
+
+| Response Status       | Descrição                           |
+|  :--------- | :---------------------------------- |
+|  `200` | Sucesso, retorna dados do estudante|
+|  `404` | Estudante não encontrado|
+
+
+##
 #### S14 -  Exportação de PDF dos Treinos do Estudante
 
 ```http
