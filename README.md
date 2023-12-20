@@ -96,6 +96,7 @@ Request JSON exemplo
   }
 
 ```
+Após o cadastro bem-sucedido, o usuário receberá um email de boas-vindas contendo o nome do usuário, descrição do plano assinado e limites do plano.
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
