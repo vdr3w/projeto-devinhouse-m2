@@ -1,4 +1,4 @@
-![App Screenshot](https://github.com/vdr3w/projeto-devinhouse-m2/assets/84882983/bf5dec84-d33e-4b68-b129-16518129ab9f)
+![App Screenshot](https://i.imgur.com/oq1bY0i.png)
 # DEVinGYM API
 
 Este projeto é uma API para gerenciamento de uma academia, desenvolvida com Laravel 10 e PostgreSQL. A API facilita o cadastro e a administração de usuários, exercícios, estudantes e treinos, além de prover um dashboard com informações úteis.
@@ -486,23 +486,13 @@ Não há response no body em caso de sucesso, o PDF é enviado como download.
 |  `404` | Estudante não encontrado|
 
 ##
-🏆 Projeto Avaliativo do Módulo 2 :: DEVINHOUSE
-#### DEVinHouse[Zucchetti] - Módulo 2
-
-|        |                             |
-|  :--------- | :---------------------------------- |
-|  <img src="https://media.licdn.com/dms/image/C4D0BAQGcs8aDa4BZOQ/company-logo_200_200/0/1668186440015?e=1690416000&v=beta&t=YhQTfa9VLbEVw1XnROd2OsJUwGu-7Ia8eUoy18a3ve0" width="100%" height="100%"/> | [LAB365 ](https://lab365.tech/) - Espaço do SENAI para desenvolver habilidades do futuro.|
-
-
-
-
-
+#### 🏆 Projeto Avaliativo do Módulo 2 DEVinHouse[Zucchetti] - BACKEND
 ## Autor
 
 |        |                             |
 |  :--------- | :---------------------------------- |
-|  <img src="https://avatars.githubusercontent.com/u/86934710?v=4" width="50%" height="50%"/> | Alexandre Mariano :: [@devmariano](https://www.github.com/devmariano)|
-
+|  <img src="https://media.licdn.com/dms/image/D4D03AQHEKA_1us4z8g/profile-displayphoto-shrink_800_800/0/1699566513630?e=1708560000&v=beta&t=gBTtxoLnri1jD9ze8wxoxemiDl-jsaWCOGFUrYv_geo" width="50%" height="50%"/> | Andre (Drew) Leonardo Rocha Vieira :: [@vDr3w](https://www.github.com/vdr3w)|
+##
 ###
-![Logo](https://raw.githubusercontent.com/devmariano/project_files_repo/main/labMedicine_logo6.jpg)
-
+#### BONUS PRA QUEM LEU ATÉ AQUI: Representação da DEVinGYM pela AI DALL-E 🤣❤
+![DevInGym](https://i.imgur.com/zUET9ye.png)
