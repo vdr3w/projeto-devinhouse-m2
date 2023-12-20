@@ -447,7 +447,7 @@ Exemplo de Response:
 ##
 ### 🚥 Endpoints - 🚣 Rotas de Treinos
 #### S11 -  Cadastro de Treino
-![CADASTROTREINO](https://i.imgur.com/fIivojZ.png)
+![CADASTROTREINO](https://i.imgur.com/N2z6efK.png)
 ```http
   POST /api/workouts
 ```
@@ -505,7 +505,7 @@ Exemplo de Response:
 
 ##
 #### S12 - Listagem de Treinos por Estudante
-
+![LISTATREINOPORESTUDANTE](https://i.imgur.com/ZnsTXU7.png)
 ```http
   GET /api/students/:studentId/workouts
 ```
