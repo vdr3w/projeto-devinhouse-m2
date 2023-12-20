@@ -1,12 +1,14 @@
 ![App Screenshot](https://github.com/vdr3w/projeto-devinhouse-m2/assets/84882983/bf5dec84-d33e-4b68-b129-16518129ab9f)
 # API DEVinGYM
 
-O Projeto DEVinGYM consiste em uma API para gestão hospitalar que permite o cadastro e gestão de médicos, enfermeiros e pacientes além do cadastro e **listagem** de atentimentos.
-
+Este projeto consiste em uma API para a gestão de uma academia, utilizando Laravel 10 e PostgreSQL. A API permite o cadastro e gerenciamento de usuários, exercícios, estudantes e treinos, além de fornecer um painel de controle com informações relevantes.
 
 ## 🔧 Tecnologias utilizadas
 
-Projeto foi desenvolvido utilizando a linguagem javascript com Node.js framework e banco de dados PostgreSQL. 
+O projeto foi desenvolvido utilizando:
+
+PHP com framework Laravel 10
+Banco de dados PostgreSQL
 
 ### Vídeo de apresentação: 
 link
@@ -16,441 +18,366 @@ Seguem abaixo as depêndencias externas utilizadas:
 
 | Plugin | Uso |
 | ------ | ------ |
-| Express | Gerenciar requisições de diferentes verbos HTTP em diferentes URLs |
-| Sequelize | Gerenciar modelos da aplicação |
-| Pg, Pg-hstore | Cliente PostgreSQL, Serializa e desserializa dados JSON |
-| YUP | Validação dos dados |
-| Dotenv | Carrega variáveis de ambiente de um arquivo .env |
+| Laravel | Framework PHP para desenvolvimento web |
+| PostgreSQL | Sistema de gerenciamento de banco de dados |
+| JWT | Autenticação via tokens JSON Web Tokens |
 
 ## 🧰 Técnicas e padrões utilizadas
 
-O projeto foi dividido em uma estruturas de pastas para organizar os models, controllers, middlewares e database
+A estrutura do projeto foi organizada em diferentes camadas, como models, controllers e routes, seguindo os princípios da programação orientada a objetos e padrões de design MVC.
 
 | Local | Uso |
 | ------ | ------ |
-| /src/models | Contém todos modelos da aplicação |
-| /src/controllers | Contém todos modelos da aplicação |
-| /src/middlewares | Contém os middlewares de validação |
-| /src/database | Contém todos modelos da aplicação |
+| /app/Models | Modelos da aplicação |
+| /app/Http/Controllers | Controladores para gerenciar a lógica de negócios |
+| /src/middlewares | Middlewares de validação do Token JWT |
+| /routes | Definição das rotas da API |
 
 ### Modelagem da base de dados PostgreSQL
 
-Foi utilizado o app https://dbdiagram.io/ para modelagem previa da base postgres. 
+O projeto utilizou PostgreSQL para o gerenciamento de dados. 
 
-Acesse a documentação do modelo: https://dbdocs.io/alexandre_mariano1/labmedicinebd
+❗❗❗❗❗❗❗❗❗(Inserir link ou imagem do modelo de dados, se disponível)
 
-![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/modelo_db.jpg)
+❗![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/modelo_db.jpg)
 
 ### Organização de etapas e cronograma
 
-Acesse no [NOTION](https://tough-shoe-442.notion.site/Projeto-Avaliativo-Modulo-01-00f2823f3dba45e3971502b7d22d5f50)
+O projeto foi planejado e executado conforme um cronograma definido. 
+
+❗❗❗❗❗❗❗❗❗(Inserir link do cronograma, se disponível)
 
 
 ## 🚀 Como executar o projeto
 
--Clonar o repositório https://github.com/devmariano/Projeto_Avaliativo_API_Modulo01.git
-
--Criar uma base de dados no PostgreSQL com nome **labmedicinebd**
-
--Criar um arquivo .env na raiz do projeto com os seguintes parametros:
+- Clone o repositório ❗❗❗(inserir URL do repositório).
+- Crie um banco de dados PostgreSQL chamado academia_api. ❗❗❗(inserir comando para criação do db).
+- Configure as variáveis de ambiente no arquivo .env.
+- Execute os comandos para instalar as dependências e iniciar o servidor:
+  
 ```
-DIALECT_DATABASE=''
-HOST_DATABASE=''
-USER_DATABASE=''
-PASSWORD_DATABASE=''
-PORT_DATABASE=''
-PORT_API=''
-NAME_DATABASE=''
-```
-
--No prompt de comando executar :
-```sh
-npm install 
-```
--Executar em seguida:
-```sh
-npm start
+composer install
+php artisan serve
 ```
 
 ## 💻 Demonstração da API 
 
-Aqui você pode testar os endpoints online: <https://labmedicine-api.onrender.com> 
-(Atenção: por se tratar de um serviço gratuito a primeira requisição pode demorar até 30 segundos até o serviço iniciar, as seguintes são em velocidade normal)
+❗❗❗❗❗❗❗❗❗URL de demonstração da API: (inserir URL)
 
-ℹ️ disponivel até 20/07/2023 
+❗![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/teste_rota.jpg)
 
-![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/teste_rota.jpg)
 ## 🚑📗 Documentação da API
 
-### 🚥 Endpoints - Rotas Pacientes
-#### S01 - Cadastro de Paciente
+### 🚥 Endpoints - Rotas Usuários
+#### S01 - Cadastro de usuário
 
 ```http
-  POST /api/pacientes
+    POST /api/users
 ```
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `id`      | `int` | **Autoincremental**. Chave primaria |
-| `nome_completo` | `string` | **Obrigatório**. Nome do paciente|
-| `genero` | `string` | Genero do paciente|
-| `data_nascimento` | `date` | **Obrigatório** Data de nascimento do paciente|
-| `cpf` | `string` | **Obrigatório**. CPF do paciente, único e válido|
-| `telefone` | `string` | Telefone do paciente|
-| `contato_emergencia` | `string` | **Obrigatório**. Nome do contato de emergência|
-| `lista_alergias` | `string` | Alergias do paciente|
-| `lista_cuidados` | `string` | Cuidados especiais do paciente|
-| `convenio` | `string` | Convênio do paciente|
-| `status_atendimento` | `string` | Valores: 'AGUARDANDO_ATENDIMENTO','EM_ATENDIMENTO','ATENDIDO','NAO_ATENDIDO'|
+| `name` | `string` | **Obrigatório**. Nome do usuário, máximo 255 caracteres|
+| `email` | `string` | **Obrigatório**. Email do usuário, único, válido e máximo 255 caracteres|
+| `password` | `string` | **Obrigatório**. Senha do usuário, mínimo 8 caracteres e máximo 32 caracteres|
+| `date_birth` | `date` | **Obrigatório** Data de nascimento do usuário|
+| `cpf` | `string` | **Obrigatório**  CPF do usuário, único, válido e com 14 caracteres|
+| `plan_id` | `string` | **Obrigatório**. ID do plano selecionado, deve existir na tabela plans|
 
 
 Request JSON exemplo
 ```http
   {
-    "nome_completo":"Paulo Nassi",
-    "genero":"MASCULINO",
-    "data_nascimento":"1984-03-01",
-    "cpf":"47360294045",
-	"telefone":"21 984569813",
-    "contato_emergencia":"Marina Nassi",
-	"lista_alergias":"Dipirona",
-	"lista_cuidados":"nenhum",
-	"convenio":"Amil",
-	"status_atendimento":"AGUARDANDO_ATENDIMENTO"
-}
+    "name": "Drew Vieira",
+    "email": "drew@example.com",
+    "password": "senha123",
+    "date_birth": "1990-01-01",
+    "cpf": "123.456.789-00",
+    "plan_id": 1
+  }
+
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `201` | sucesso|
-|  `400` | dados inválidos|
-|  `409` | CPF já cadastrado|
-|  `500` | erro interno|
+|  `201` | Sucesso|
+|  `400` | Dados Inválidos|
+|  `409` | Conflito de CPF ou Email|
 
 ##
 
-#### S02 - Atualização dos dados de Pacientes
+#### S02 - Login de Usuário
 
 ```http
-  PUT /api/pacientes/:id
+   POST /api/login
 ```
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `nome_completo` | `string` |  Nome do paciente|
-| `genero` | `string` | Genero do paciente|
-| `data_nascimento` | `date` |  Data de nascimento do paciente|
-| `cpf` | `string` |  CPF do paciente, único e válido|
-| `telefone` | `string` | Telefone do paciente|
-| `contato_emergencia` | `string` | Nome do contato de emergência|
-| `lista_alergias` | `string` | Alergias do paciente|
-| `lista_cuidados` | `string` | Cuidados especiais do paciente|
-| `convenio` | `string` | Convênio do paciente|
+| `email` | `string` |  **Obrigatório**. Email do usuário|
+| `password` | `string` | **Obrigatório**. Senha do usuário|
 
 
 Request JSON exemplo
 ```http
-/api/pacientes/1
-```
-```http
   {
-	"telefone":"'1 9245698115",
-	"convenio":"Unimed"
-}
+    "email": "drew@example.com",
+    "password": "senha123"
+  }
+
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
-|  `400` | dados inválidos|
-|  `404` | não encontrado registro com o código informado|
-|  `500` | erro interno|
+|  `200` | Sucesso, retorna nome do usuário e token JWT|
+|  `400` | Dados inválidos|
+|  `401` | Credenciais inválidas|
 
 ##
-#### S03 - Atualização do status de atendimento
+#### S03 - Dashboard
 
 ```http
-  PUT /api/pacientes/:id/status
+  GET /api/dashboard
 ```
 
+Não é necessário enviar parâmetros no body da requisição para este endpoint. A autenticação é realizada via token JWT.
+
+Resposta JSON exemplo (depende dos dados do usuário autenticado)
+```http
+  {
+    "registered_students": 11,
+    "registered_exercises": 5,
+    "current_user_plan": "Prata",
+    "remaining_students": 9
+  }
+
+```
+
+| Response Status       | Descrição                           |
+|  :--------- | :---------------------------------- |
+|  `200` | Sucesso, retorna dados do dashboard do usuário|
+|  `500` | Erro interno|
+
+##
+### 🚥 Endpoints - Rotas Exercícios
+#### S04 - Cadastro de Exercícios
+
+```http
+   POST /api/exercises
+```
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório** número inteiro chave primaria|
-| `status_atendimento` | `string` | Valores: 'AGUARDANDO_ATENDIMENTO','EM_ATENDIMENTO','ATENDIDO','NAO_ATENDIDO'|
-
-
+| `description` | `string` |  **Obrigatório**. Descrição do exercício, máximo 255 caracteres|
 
 Request JSON exemplo
 ```http
-/api/pacientes/1/status
-```
-```http
   {
-	"status_atendimento":"EM_ATENDIMENTO"
+    "description": "Levantamento de peso"
   }
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
-|  `400` | dados inválidos|
-|  `404` | não encontrado registro com o código informado|
-|  `500` | erro interno|
+|  `201` | Sucesso, exercício cadastrado|
+|  `400` | Dados inválidos|
+|  `409` | Exercício já cadastrado para o usuário|
 
 ##
-#### S04 - Listagem de Pacientes
+#### S05 - Listagem de Exercícios
 
 ```http
-  GET /api/pacientes
+  GET /api/exercises
 ```
-Não é necessario resquest body
+Não é necessário enviar parâmetros no body da requisição. Ele vai listar os exercicios do usuario logado.
 
-Opcionalmente pode ser utilizado no patch um query param informando: AGUARDANDO_ATENDIMENTO, EM_ATENDIMENTO, ATENDIDO e NAO_ATENDIDO
-
-Exemplo:
-`/api/pacientes?status=ATENDIDO`
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `status_atendimento` | `string` | Valores: 'AGUARDANDO_ATENDIMENTO','EM_ATENDIMENTO','ATENDIDO','NAO_ATENDIDO'|
-
-Exemplo de resposta:
-
+Exemplo de response:
 ```http
-{
-	"id": 1,
-	"nome_completo":"Paulo Nassi",
-    "genero":"MASCULINO",
-    "data_nascimento":"1984-03-01",
-    "cpf":"47360294045",
-	"telefone":"21 984569813",
-    "contato_emergencia":"Marina Nassi",
-	"lista_alergias":"Dipirona",
-	"lista_cuidados":"nenhum",
-	"convenio":"Amil",
-	"status_atendimento": "ATENDIDO",
-	"total_atendimentos": 1,
-	"createdAt": "2023-04-19T10:32:32.796Z",
-	"updatedAt": "2023-04-20T21:14:53.099Z"
-}
+  [
+    {
+      "id": 1,
+      "description": "Levantamento de peso",
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "description": "Supino",
+      "user_id": 1
+    }
+    // ... mais exercícios
+  ]
+
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
+|  `200` | Sucesso, retorna lista de exercícios|
 
 ##
-#### S05 - Listagem de Paciente pelo identificador
+#### S06 - Deleção de Exercícios
 
 ```http
-  GET /api/pacientes/:id
+    DELETE /api/exercises/:id
 ```
-Não é necessario resquest body
-
-Request exemplo:
-`/api/pacientes/1`
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório** número inteiro chave primaria|
+| `id` | `int` |  **Obrigatório**. ID do exercício|
 
-Exemplo de resposta:
-
-```http
-{
-	"id": 1,
-	"nome_completo":"Paulo Nassi",
-    "genero":"MASCULINO",
-    "data_nascimento":"1984-03-01",
-    "cpf":"47360294045",
-	"telefone":"21 984569813",
-    "contato_emergencia":"Marina Nassi",
-	"lista_alergias":"Dipirona",
-	"lista_cuidados":"nenhum",
-	"convenio":"Amil",
-	"status_atendimento": "ATENDIDO",
-	"total_atendimentos": 1,
-	"createdAt": "2023-04-19T10:32:32.796Z",
-	"updatedAt": "2023-04-20T21:14:53.099Z"
-}
-```
+Não há response no body em caso de sucesso.
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
-|  `404` | não encontrado registro com o código informado|
-
-##
-#### S06 - Exclusão de Paciente
-
-```http
-  DELETE /api/pacientes/:id
-```
-Não é necessario resquest body
-
-Request exemplo:
-`/api/pacientes/1`
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório** número inteiro chave primaria|
-
-Não há response no body em caso de sucesso
-
-
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `204` | sucesso|
-|  `404` | não encontrado registro com o código informado|
+|  `204` | Sucesso, exercício deletado|
+|  `403` | Ação não permitida|
+|  `404` | Exercício não encontrado|
 
 ---
-### 🚥 Endpoints - Rotas Medicos
-#### S07 - Cadastro de Medico
+### 🚥 Endpoints - Rotas Estudantes
+#### S07 - Cadastro de Estudante
 
 ```http
-  POST /api/medicos
+  POST /api/students
 ```
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `id`      | `int` | **Autoincremental**. Chave primaria |
-| `nome_completo` | `string` | **Obrigatório**. Nome do medico|
-| `genero` | `string` | Genero do medico|
-| `data_nascimento` | `date` | **Obrigatório** Data de nascimento do medico|
-| `cpf` | `string` | **Obrigatório**. CPF do medico, único e válido|
-| `telefone` | `string` | Telefone do medico|
-| `instituicao_ensino_formacao` | `string` | **Obrigatório**. Instituição de formação|
-| `crm_uf` | `string` | **Obrigatório** Cadastro do CRM/UF|
-| `especializacao_clinica` | `string` | **Obrigatório** Valores: CLINICO_GERAL, ANESTESISTA, DERMATOLOGIA, GINECOLOGIA, NEUROLOGIA, PEDIATRIA, PSIQUIATRIA, ORTOPEDIA|
-| `estado_no_sistema` | `string` | Valores: 'ATIVO','INATIVO' , valor padrão 'ATIVO'|
+| `name` | `string` | **Obrigatório**. Nome do estudante|
+| `email` | `string` | **Obrigatório**. Email do estudante, único|
+| `date_birth` | `date` | **Obrigatório** Data de nascimento|
+| `cpf` | `string` | **Obrigatório**. CPF do estudante, único|
+| `contact` | `string` | **Obrigatório**. Contato do estudante|
+| `cep` | `string` | CEP do estudante (opcional)|
+| `street` | `string` | Rua do estudante (opcional)|
+| `... outros campos opcionais	` |  | |
 
 
 Request JSON exemplo
 ```http
   {
-    "nome_completo":"Roberto Farias",
-    "genero":"MASCULINO",
-    "data_nascimento":"1982-03-01",
-    "cpf":"22023336066",
-	"telefone":"21 984569813",
-	"instituicao_ensino_formacao":"FAEC Med",
-	"crm_uf":"76870690",
-	"especializacao_clinica":"ORTOPEDIA",
-	"estado_no_sistema": "ATIVO"
-}
+    "name": "Drew Vieira",
+    "email": "Drew@example.com",
+    "date_birth": "1993-08-02",
+    "cpf": "123.456.789-00",
+    "contact": "21 987654321",
+    "cep": "81560-420",
+    "street": "Rua Butia",
+    // ... outros campos opcionais
+  }
+
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `201` | sucesso|
-|  `400` | dados inválidos|
-|  `409` | CPF já cadastrado|
-|  `500` | erro interno|
+|  `201` | Sucesso, estudante cadastrado|
+|  `400` | Dados inválidos|
+|  `403` | Limite de cadastro atingido|
 
 ##
 
-#### S08 - Atualização dos dados de Medicos
+#### S08 - Listagem de Estudantes
 
 ```http
-  PUT /api/medicos/:id
+  GET /api/students
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `nome_completo` | `string` | Nome do medico|
-| `genero` | `string` | Genero do medico|
-| `data_nascimento` | `date` | Data de nascimento do medico|
-| `cpf` | `string` | CPF do medico, único e válido|
-| `telefone` | `string` | Telefone do medico|
-| `instituicao_ensino_formacao` | `string` | Instituição de formação|
-| `crm_uf` | `string` | Cadastro do CRM/UF|
-| `especializacao_clinica` | `string` | Valores: CLINICO_GERAL, ANESTESISTA, DERMATOLOGIA, GINECOLOGIA, NEUROLOGIA, PEDIATRIA, PSIQUIATRIA, ORTOPEDIA|
+Não é necessário enviar parâmetros no body da requisição. Ele vai retornar apenas os estudantes registrados pelo usuario logado.
 
+Exemplo de Response:
+```http
+  [
+    {
+      "id": 1,
+      "name": "Drew Vieira",
+      "email": "drew@example.com",
+      // ... outros detalhes do estudante
+    }
+    // ... mais estudantes
+  ]
 
-Request JSON exemplo
-```http
-/api/medicos/1
-```
-```http
-  {
-	"telefone":"11 9245698345"
-}
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
-|  `400` | dados inválidos|
-|  `404` | não encontrado registro com o código informado|
-|  `500` | erro interno|
+|  `200` | Sucesso, retorna lista de estudantes|
+
 
 ##
-#### S09 - Atualização do estado no sistema
+### 🚥 Endpoints - Rotas Treinos
+#### S09 -  Cadastro de Treino
 
 ```http
-  PUT /api/medicos/:id/status
+  POST /api/workouts
 ```
 
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório** número inteiro chave primaria|
-| `estado_no_sistema` | `string` | Valores: 'ATIVO','INATIVO'|
+| `id` | `int` | **Obrigatório**. número inteiro chave primaria|
+| `student_id` | `int` | **Obrigatório**.  ID do estudante|
+| `exercise_id` | `int` | **Obrigatório**.  ID do exercício|
+| `repetitions` | `int` | **Obrigatório**. Número de repetições|
+| `weight` | `numeric` | **Obrigatório**. Peso usado no exercício|
+| `break_time` | `int` | **Obrigatório**. Tempo de descanso (em segundos)|
+| `day` | `int` | **Obrigatório**. Dia da semana (enum: SEGUNDA, TERÇA, QUARTA, QUINTA, SEXTA, SÁBADO, DOMINGO)|
+| `observataions` | `int` | Observações sobre o treino|
+| `time` | `int` | **Obrigatório**. Duração do exercício (em minutos)|
 
 
 
 Request JSON exemplo
 ```http
-/api/medicos/1/status
-```
-```http
   {
-	"status_atendimento":"INATIVO"
+    "student_id": 1,
+    "exercise_id": 2,
+    "repetitions": 10,
+    "weight": 20.5,
+    "break_time": 60,
+    "day": "SEGUNDA",
+    "observations": "Focar na postura",
+    "time": 30
   }
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
-|  `400` | dados inválidos|
-|  `404` | não encontrado registro com o código informado|
-|  `500` | erro interno|
+|  `201` | Sucesso, treino cadastrado|
+|  `400` | Dados inválidos|
+|  `409` | Treino para o mesmo dia já cadastrado|
 
 ##
-#### S10 - Listagem de Medicos
+#### S10 - Listagem de Treinos por Estudante
 
 ```http
-  GET /api/medicos
+  GET /api/students/:studentId/workouts
 ```
-Não é necessario resquest body
 
-Opcionalmente pode ser utilizado no patch um query param informando: ATIVO,  INATIVO
-
-Exemplo:
-`/api/medicos?status=INATIVO`
 | Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
-| `status_atendimento` | `string` | Valores: 'ATIVO', 'INATIVO'|
+| `studentId` | `int` | **Obrigatório**. ID do estudante|
 
 Exemplo de resposta:
 
 ```http
-{
-	"id": 1,
-    "nome_completo":"Roberto Farias",
-    "genero":"MASCULINO",
-    "data_nascimento":"1982-03-01",
-    "cpf":"22023336066",
-	"telefone":"21 984569813",
-	"instituicao_ensino_formacao":"FAEC Med",
-	"crm_uf":"76870690",
-	"especializacao_clinica":"ORTOPEDIA",
-	"estado_no_sistema": "INATIVO"
-	"total_atendimentos": 1,
-	"createdAt": "2023-04-19T12:00:46.855Z",
-	"updatedAt": "2023-04-21T00:02:47.509Z"
-}
+  {
+    "student_id": 1,
+    "student_name": "Drew Vieira",
+    "workouts": {
+      "SEGUNDA": ["Caminhada Contemplativa"],
+      "TERÇA": [],
+      "QUARTA": ["Natação na cama"],
+      "QUINTA": [],
+      "SEXTA": ["Corrida em Slowmotion"],
+      "SÁBADO": [],
+      "DOMINGO": []
+    }
+  }
+
 ```
 
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
-|  `200` | sucesso|
+|  `200` | Sucesso, retorna treinos do estudante|
+|  `404` | Estudante não encontrado|
 
 ##
 #### S11 - Listagem de Medico pelo identificador
