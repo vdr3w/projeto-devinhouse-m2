@@ -109,4 +109,60 @@ public function index(Request $request)
         return response()->json($student, Response::HTTP_OK);
     }
 
+    private function formatCpf($cpf)
+    {
+        $cpf = preg_replace("/\D/", '', $cpf);
+        return substr($cpf, 0, 3) . '.' .
+            substr($cpf, 3, 3) . '.' .
+            substr($cpf, 6, 3) . '-' .
+            substr($cpf, 9, 2);
+    }
+
+    private function formatContact($contact)
+    {
+        $contact = preg_replace("/\D/", '', $contact);
+        if (substr($contact, 0, 2) == '55') {
+            $contact = substr($contact, 2);
+        }
+        return '(' . substr($contact, 0, 2) . ') ' .
+            substr($contact, 2, 5) . '-' .
+            substr($contact, 7, 4);
+    }
+
+    private function formatCep($cep)
+    {
+        $cep = preg_replace("/\D/", '', $cep);
+        return substr($cep, 0, 2) . '.' .
+            substr($cep, 2, 3) . '-' .
+            substr($cep, 5, 3);
+    }
+
+    public function show($id)
+    {
+        $student = Student::find($id);
+
+        if (!$student) {
+            return response()->json(['error' => 'Estudante não encontrado'], Response::HTTP_NOT_FOUND);
+        }
+
+        $response = [
+                'id' => $student->id,
+                'name' => $student->name,
+                'email' => $student->email,
+                'date_birth' => $student->date_birth,
+                'cpf' => $this->formatCpf($student->cpf),
+                'contact' => $this->formatContact($student->contact),
+                'address' => [
+                    'cep' => $this->formatCep($student->cep),
+                    'street' => $student->street,
+                    'province' => $student->state,
+                    'neighborhood' => $student->neighborhood,
+                    'city' => $student->city,
+                    'complement' => $student->complement,
+                    'number' => $student->number
+            ]
+        ];
+
+        return response()->json($response, Response::HTTP_OK);
+    }
 }
