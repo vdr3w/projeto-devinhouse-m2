@@ -75,4 +75,21 @@ class WorkoutController extends Controller
     return response()->json($response, Response::HTTP_OK);
     }
 
+public function exportPDF($id_do_estudante)
+{
+    $student = Student::find($id_do_estudante);
+
+    if (!$student) {
+        return response()->json(['error' => 'Estudante não encontrado'], Response::HTTP_NOT_FOUND);
+    }
+
+    // Consulta todos os workouts relacionados a este estudante
+    $workouts = Workout::where('student_id', $id_do_estudante)->get();
+
+    $pdf = Pdf::loadView('pdf.student', compact('student', 'workouts'));
+    return $pdf->download('treino-' . $student->name . '.pdf');
+}
+
+
+
 }
