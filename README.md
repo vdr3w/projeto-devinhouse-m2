@@ -1,9 +1,7 @@
+![App Screenshot](https://github.com/vdr3w/projeto-devinhouse-m2/assets/84882983/bf5dec84-d33e-4b68-b129-16518129ab9f)
+# API DEVinGYM
 
-
-![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/labMedicine_logo2.jpg)
-# API LABMedicine 
-
-O Projeto LABMedicine consiste em uma API para gestão hospitalar que permite o cadastro e gestão de médicos, enfermeiros e pacientes além do cadastro e **listagem** de atentimentos.
+O Projeto DEVinGYM consiste em uma API para gestão hospitalar que permite o cadastro e gestão de médicos, enfermeiros e pacientes além do cadastro e **listagem** de atentimentos.
 
 
 ## 🔧 Tecnologias utilizadas
@@ -11,7 +9,7 @@ O Projeto LABMedicine consiste em uma API para gestão hospitalar que permite o 
 Projeto foi desenvolvido utilizando a linguagem javascript com Node.js framework e banco de dados PostgreSQL. 
 
 ### Vídeo de apresentação: 
-https://drive.google.com/file/d/1TgatvSkL_zVhRnYMggKyW_LDfgEGhQm4/view?usp=share_link
+link
 
 Seguem abaixo as depêndencias externas utilizadas:
 
