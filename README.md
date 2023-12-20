@@ -203,7 +203,7 @@ Request JSON exemplo
 
 ##
 #### S05 - Listagem de Exercícios
-
+![LISTAREXERCICIO](https://i.imgur.com/xie1r8W.png)
 ```http
   GET /api/exercises
 ```
@@ -233,7 +233,7 @@ Exemplo de response:
 
 ##
 #### S06 - Deleção de Exercícios
-
+![DELETAREXERCICIO](https://i.imgur.com/sXoRCP7.png)
 ```http
     DELETE /api/exercises/:id
 ```
@@ -252,7 +252,7 @@ Não há response no body em caso de sucesso.
 ---
 ### 🚥 Endpoints - 🤸 Rotas de Estudantes
 #### S07 - Cadastro de Estudante
-
+![CADASTROESTUDANTE](https://i.imgur.com/MgarUHX.png)
 ```http
   POST /api/students
 ```
@@ -319,12 +319,12 @@ Resposta JSON exemplo (depende dos dados do usuário autenticado)
 ##
 
 #### S08 - Listagem de Estudantes
-
+![LISTARESTUDANTE](https://i.imgur.com/fIivojZ.png)
 ```http
   GET /api/students
 ```
 
-Não é necessário enviar parâmetros no body da requisição. Ele vai retornar apenas os estudantes registrados pelo usuario logado.
+Não é necessário enviar parâmetros no body da requisição. Ele vai retornar apenas os estudantes registrados pelo usuario logado. É possivel usar a query para filtrar por nome, email ou cpf.
 
 Exemplo de Response:
 ```http
@@ -373,12 +373,81 @@ Exemplo de Response:
 | Response Status       | Descrição                           |
 |  :--------- | :---------------------------------- |
 |  `200` | Sucesso, retorna lista de estudantes|
+##
+
+#### S09 - Deleção de Estudante (Soft Delete)
+![DELETARESTUDANTE](https://i.imgur.com/nbTEG30.png)
+```http
+  DELETE /api/students/:id
+```
+
+Não é necessário enviar parâmetros no body da requisição.
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `id` | `int` | **Obrigatório**. ID do estudante na URL|
+
+Exemplo de Response:
+```http
+    (Nenhum conteúdo no corpo da resposta)
+```
+
+| Response Status       | Descrição                           |
+|  :--------- | :---------------------------------- |
+|  `204` | Sucesso, estudante excluído|
+|  `403` | Não permitido excluir|
+|  `404` | Estudante não encontrado|
+
+
+##
+#### S10 - Atualização de Estudante
+![ATTESTUDANTE](https://i.imgur.com/1Wv6Sge.png)
+```http
+  PUT /api/students/:id
+```
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `id` | `int` | **Obrigatório**. ID do estudante na URL|
+
+Exemplo de request JSON:
+```http
+    {
+      "name": "Carlos Pereira",
+      "email": "carlos.pereira@example.com",
+      "contact": "(31) 99876-5432"
+    }
+```
+
+Exemplo de Response:
+```http
+  {
+  "id": 5,
+  "name": "Carlos Pereira",
+  "email": "carlos.pereira@example.com",
+  "contact": "(31) 99876-5432",
+  "address": {
+    "cep": "30.140-110",
+    "street": "Rua da Bahia",
+    "state": "MG",
+    "neighborhood": "Centro",
+    "city": "Belo Horizonte",
+    "number": "789"
+  }
+}
+
+```
+
+| Response Status       | Descrição                           |
+|  :--------- | :---------------------------------- |
+|  `200` | Sucesso, estudante atualizado|
+|  `400` | Dados inválidos|
+|  `404` | Estudante não encontrado|
 
 
 ##
 ### 🚥 Endpoints - 🚣 Rotas de Treinos
-#### S09 -  Cadastro de Treino
-
+#### S11 -  Cadastro de Treino
+![CADASTROTREINO](https://i.imgur.com/fIivojZ.png)
 ```http
   POST /api/workouts
 ```
@@ -435,7 +504,7 @@ Exemplo de Response:
 |  `409` | Treino para o mesmo dia já cadastrado|
 
 ##
-#### S10 - Listagem de Treinos por Estudante
+#### S12 - Listagem de Treinos por Estudante
 
 ```http
   GET /api/students/:studentId/workouts
@@ -478,7 +547,7 @@ Exemplo de resposta:
 |  `404` | Estudante não encontrado|
 
 ##
-#### S11 -  Exportação de PDF dos Treinos do Estudante
+#### S14 -  Exportação de PDF dos Treinos do Estudante
 
 ```http
   GET /api/students/:id_do_estudante/export
