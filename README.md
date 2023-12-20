@@ -1,75 +1,73 @@
 ![App Screenshot](https://github.com/vdr3w/projeto-devinhouse-m2/assets/84882983/bf5dec84-d33e-4b68-b129-16518129ab9f)
-# API DEVinGYM
+# DEVinGYM API
 
-Este projeto consiste em uma API para a gestão de uma academia, utilizando Laravel 10 e PostgreSQL. A API permite o cadastro e gerenciamento de usuários, exercícios, estudantes e treinos, além de fornecer um painel de controle com informações relevantes.
+Este projeto é uma API para gerenciamento de uma academia, desenvolvida com Laravel 10 e PostgreSQL. A API facilita o cadastro e a administração de usuários, exercícios, estudantes e treinos, além de prover um dashboard com informações úteis.
 
-## 🔧 Tecnologias utilizadas
+## 🏋️‍♂️ Tecnologias utilizadas
 
 O projeto foi desenvolvido utilizando:
 
-PHP com framework Laravel 10
-Banco de dados PostgreSQL
+- PHP com Laravel 10
+- Banco de dados PostgreSQL
 
-### Vídeo de apresentação: 
+### Vídeo Demonstrativo: 
 link
 
-Seguem abaixo as depêndencias externas utilizadas:
+Principais dependências externas:
 
-
-| Plugin | Uso |
-| ------ | ------ |
+| Plugin | Utilização |
+| ------ | ---------- |
 | Laravel | Framework PHP para desenvolvimento web |
 | PostgreSQL | Sistema de gerenciamento de banco de dados |
 | JWT | Autenticação via tokens JSON Web Tokens |
 
-## 🧰 Técnicas e padrões utilizadas
+## 💡 Padrões e Técnicas Utilizadas
 
-A estrutura do projeto foi organizada em diferentes camadas, como models, controllers e routes, seguindo os princípios da programação orientada a objetos e padrões de design MVC.
+O projeto segue uma estrutura de camadas, dividido em models, controllers e routes, aderindo aos princípios da Programação Orientada a Objetos e ao padrão MVC.
 
-| Local | Uso |
-| ------ | ------ |
+| Diretório | Função |
+| --------- | ------ |
 | /app/Models | Modelos da aplicação |
-| /app/Http/Controllers | Controladores para gerenciar a lógica de negócios |
-| /src/middlewares | Middlewares de validação do Token JWT |
+| /app/Http/Controllers | Controladores para a lógica de negócios |
+| /src/middlewares | Middlewares para validação do Token JWT |
 | /routes | Definição das rotas da API |
 
-### Modelagem da base de dados PostgreSQL
+### Modelagem do Banco de Dados PostgreSQL
 
-O projeto utilizou PostgreSQL para o gerenciamento de dados. 
+Utilização do PostgreSQL para gerenciamento de dados. 
 
 ❗❗❗❗❗❗❗❗❗(Inserir link ou imagem do modelo de dados, se disponível)
 
 ❗![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/modelo_db.jpg)
 
-### Organização de etapas e cronograma
+### Cronograma e Organização
 
-O projeto foi planejado e executado conforme um cronograma definido. 
+Planejamento e execução do projeto de acordo com um cronograma estabelecido. 
 
 ❗❗❗❗❗❗❗❗❗(Inserir link do cronograma, se disponível)
 
-
-## 🚀 Como executar o projeto
+## 🏃‍♂️ Instruções para Execução do Projeto
 
 - Clone o repositório ❗❗❗(inserir URL do repositório).
 - Crie um banco de dados PostgreSQL chamado academia_api. ❗❗❗(inserir comando para criação do db).
-- Configure as variáveis de ambiente no arquivo .env.
-- Execute os comandos para instalar as dependências e iniciar o servidor:
+- Configure o arquivo .env com as variáveis de ambiente.
+- Execute os comandos para instalação e inicialização do servidor:
   
 ```
 composer install
 php artisan serve
 ```
 
-## 💻 Demonstração da API 
+## 🖥️ Demonstração da API 
 
 ❗❗❗❗❗❗❗❗❗URL de demonstração da API: (inserir URL)
 
 ❗![App Screenshot](https://raw.githubusercontent.com/devmariano/project_files_repo/main/teste_rota.jpg)
 
-## 🚑📗 Documentação da API
+## 📚 Documentação da API
 
-### 🚥 Endpoints - Rotas Usuários
-#### S01 - Cadastro de usuário
+### 🚥 Endpoints - 🏅 Rotas Usuários
+#### S01 - Cadastro de usuário 
 
 ```http
     POST /api/users
@@ -107,7 +105,8 @@ Request JSON exemplo
 
 ##
 
-#### S02 - Login de Usuário
+### 🚥 Endpoints - 🏋️‍♂️ Rotas de Login 
+#### S02 - Login
 
 ```http
    POST /api/login
@@ -142,6 +141,7 @@ Resposta JSON exemplo
 |  `401` | Credenciais inválidas|
 
 ##
+### 🚥 Endpoints - 🚴 Rotas de Dashboard
 #### S03 - Dashboard
 
 ```http
@@ -167,7 +167,7 @@ Resposta JSON exemplo (depende dos dados do usuário autenticado)
 |  `500` | Erro interno|
 
 ##
-### 🚥 Endpoints - Rotas Exercícios
+### 🚥 Endpoints - 🏊‍♀️ Rotas de Exercícios
 #### S04 - Cadastro de Exercícios
 
 ```http
@@ -239,7 +239,7 @@ Não há response no body em caso de sucesso.
 |  `404` | Exercício não encontrado|
 
 ---
-### 🚥 Endpoints - Rotas Estudantes
+### 🚥 Endpoints - 🤸 Rotas de Estudantes
 #### S07 - Cadastro de Estudante
 
 ```http
@@ -365,7 +365,7 @@ Exemplo de Response:
 
 
 ##
-### 🚥 Endpoints - Rotas Treinos
+### 🚥 Endpoints - 🚣 Rotas de Treinos
 #### S09 -  Cadastro de Treino
 
 ```http
@@ -485,8 +485,8 @@ Não há response no body em caso de sucesso, o PDF é enviado como download.
 |  `404` | Estudante não encontrado|
 
 ##
-## Projeto Avaliativo do Módulo 1 :: LAB 365 
-#### Curso WEB FullStack 2023
+🏆 Projeto Avaliativo do Módulo 2 :: DEVINHOUSE
+#### DEVinHouse[Zucchetti] - Módulo 2
 
 |        |                             |
 |  :--------- | :---------------------------------- |
