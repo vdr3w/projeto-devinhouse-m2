@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\DashboardController;
 
@@ -27,7 +28,9 @@ Route::delete('students/{id}', [StudentController::class, 'destroy']);
 Route::put('students/{id}', [StudentController::class, 'update']);
 Route::post('students', [StudentController::class, 'store'])->middleware('validateLimitStudents');
 
-
+//WORKOUTS
+Route::post('workouts', [WorkoutController::class, 'store']);
+Route::get('students/{id}/workouts', [WorkoutController::class, 'indexByStudent']);
 });
 
 // Rotas públicas que somente depois ficaram privadas
