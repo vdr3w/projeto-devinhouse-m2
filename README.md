@@ -328,7 +328,10 @@ Não há response no body em caso de sucesso.
 | `contact`                     | `string` | **Obrigatório**. Contato do estudante      |
 | `cep`                         | `string` | CEP do estudante (opcional)                |
 | `street`                      | `string` | Rua do estudante (opcional)                |
-| `... outros campos opcionais	` |          |                                            |
+| `neighborhood`                      | `string` | Bairro do estudante (opcional)                |
+| `city`                      | `string` | Cidade do estudante (opcional)                |
+| `number`                      | `string` | Numero da residencia do estudante (opcional)                |
+| `complement`                      | `string` | Complemento da residencia do estudante (opcional)                |
 
 Request JSON exemplo
 
