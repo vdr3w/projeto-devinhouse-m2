@@ -1,4 +1,5 @@
 ![App Screenshot](https://i.imgur.com/oq1bY0i.png)
+
 # DEVinGYM API
 
 Este projeto é uma API para gerenciamento de uma academia, desenvolvida com Laravel 10 e PostgreSQL. A API facilita o cadastro e a administração de usuários, exercícios, estudantes e treinos, além de prover um dashboard com informações úteis.
@@ -7,56 +8,58 @@ Este projeto é uma API para gerenciamento de uma academia, desenvolvida com Lar
 
 O projeto foi desenvolvido utilizando:
 
-- PHP com Laravel 10
-- Banco de dados PostgreSQL
+-   PHP com Laravel 10
+-   Banco de dados PostgreSQL
 
-### Vídeo Demonstrativo: 
+### Vídeo Demonstrativo:
+
 link
 
 Principais dependências externas:
 
-| Plugin | Utilização |
-| ------ | ---------- |
-| Laravel | Framework PHP para desenvolvimento web |
+| Plugin     | Utilização                                 |
+| ---------- | ------------------------------------------ |
+| Laravel    | Framework PHP para desenvolvimento web     |
 | PostgreSQL | Sistema de gerenciamento de banco de dados |
-| JWT | Autenticação via tokens JSON Web Tokens |
+| JWT        | Autenticação via tokens JSON Web Tokens    |
 
 ## 💡 Padrões e Técnicas Utilizadas
 
 O projeto segue uma estrutura de camadas, dividido em models, controllers e routes, aderindo aos princípios da Programação Orientada a Objetos e ao padrão MVC.
 
-| Diretório | Função |
-| --------- | ------ |
-| /app/Models | Modelos da aplicação |
+| Diretório             | Função                                  |
+| --------------------- | --------------------------------------- |
+| /app/Models           | Modelos da aplicação                    |
 | /app/Http/Controllers | Controladores para a lógica de negócios |
-| /src/middlewares | Middlewares para validação do Token JWT |
-| /routes | Definição das rotas da API |
+| /src/middlewares      | Middlewares para validação do Token JWT |
+| /routes               | Definição das rotas da API              |
 
 ### Modelagem do Banco de Dados PostgreSQL
 
-Utilização do PostgreSQL para gerenciamento de dados. 
+Utilização do PostgreSQL para gerenciamento de dados.
 ![App Screenshot](https://i.imgur.com/uRUpVp2.png)
 
 ### Cronograma e Organização
 
-Planejamento e execução do projeto de acordo com um cronograma estabelecido. 
+Planejamento e execução do projeto de acordo com um cronograma estabelecido.
 O projeto envolve o desenvolvimento de uma API Rest para a DevInGym usando Laravel e PostgreSQL, com foco em backend. A entrega final é em até 15 dias do início do prazo.
 
 Etapas Principais:
 
-- Desenvolvimento de Backend: Implementação de várias funcionalidades, incluindo cadastro de usuários, gerenciamento de exercícios e estudantes, e exportação de dados em PDF.
-- Entrega: Submissão do código no GitHub (privado) e vídeo explicativo no Google Drive.
-- Avaliação: Baseada em vídeo explicativo, uso do GitHub, e desenvolvimento das funcionalidades requisitadas.
+-   Desenvolvimento de Backend: Implementação de várias funcionalidades, incluindo cadastro de usuários, gerenciamento de exercícios e estudantes, e exportação de dados em PDF.
+-   Entrega: Submissão do código no GitHub (privado) e vídeo explicativo no Google Drive.
+-   Avaliação: Baseada em vídeo explicativo, uso do GitHub, e desenvolvimento das funcionalidades requisitadas.
 
 ## 🏃‍♂️ Instruções para Execução do Projeto
 
-- Clone o repositório (https://github.com/vdr3w/projeto-devinhouse-m2).
-- Crie um banco de dados PostgreSQL chamado academia_api.
-  
+-   Clone o repositório (https://github.com/vdr3w/projeto-devinhouse-m2).
+-   Crie um banco de dados PostgreSQL chamado academia_api.
+
 ```
 docker run -d --name academia_api -e POSTGRESQL_PASSWORD=*** -e POSTGRESQL_USERNAME=admin -p 5432:5432 bitnami/postgresql:latest
 ```
-- Configure o arquivo .env com as variáveis de ambiente.
+
+-   Configure o arquivo .env com as variáveis de ambiente.
 
 ```
 DB_CONNECTION=pgsql
@@ -66,8 +69,9 @@ DB_DATABASE=academia_api
 DB_USERNAME=admin
 DB_PASSWORD=***
 ```
-- Execute os comandos para instalação e inicialização do servidor:
-  
+
+-   Execute os comandos para instalação e inicialização do servidor:
+
 ```
 composer install
 php artisan serve
@@ -76,24 +80,27 @@ php artisan serve
 ## 🖥️📚 Documentação e Demonstração da API
 
 ### 🚥 Endpoints - 🏅 Rotas Usuários
-#### S01 - Cadastro de usuário 
+
+#### S01 - Cadastro de usuário
+
 ![CADASTRO](https://i.imgur.com/bJIWYIb.png)
+
 ```http
     POST /api/users
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id`      | `int` | **Autoincremental**. Chave primaria |
-| `name` | `string` | **Obrigatório**. Nome do usuário, máximo 255 caracteres|
-| `email` | `string` | **Obrigatório**. Email do usuário, único, válido e máximo 255 caracteres|
-| `password` | `string` | **Obrigatório**. Senha do usuário, mínimo 8 caracteres e máximo 32 caracteres|
-| `date_birth` | `date` | **Obrigatório** Data de nascimento do usuário|
-| `cpf` | `string` | **Obrigatório**  CPF do usuário, único, válido e com 14 caracteres|
-| `plan_id` | `string` | **Obrigatório**. ID do plano selecionado, deve existir na tabela plans|
-
+| Parâmetro    | Tipo     | Descrição                                                                     |
+| :----------- | :------- | :---------------------------------------------------------------------------- |
+| `id`         | `int`    | **Autoincremental**. Chave primaria                                           |
+| `name`       | `string` | **Obrigatório**. Nome do usuário, máximo 255 caracteres                       |
+| `email`      | `string` | **Obrigatório**. Email do usuário, único, válido e máximo 255 caracteres      |
+| `password`   | `string` | **Obrigatório**. Senha do usuário, mínimo 8 caracteres e máximo 32 caracteres |
+| `date_birth` | `date`   | **Obrigatório** Data de nascimento do usuário                                 |
+| `cpf`        | `string` | **Obrigatório** CPF do usuário, único, válido e com 14 caracteres             |
+| `plan_id`    | `string` | **Obrigatório**. ID do plano selecionado, deve existir na tabela plans        |
 
 Request JSON exemplo
+
 ```http
   {
     "name": "Drew Vieira",
@@ -105,31 +112,36 @@ Request JSON exemplo
   }
 
 ```
+
 Após o cadastro bem-sucedido, o usuário receberá um email de boas-vindas contendo o nome do usuário, descrição do plano assinado e limites do plano.
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `201` | Sucesso|
-|  `400` | Dados Inválidos|
-|  `409` | Conflito de CPF ou Email|
+![EMAILBOASVINDAS](https://i.imgur.com/G7Y4zSk.png)
+
+| Response Status | Descrição                |
+| :-------------- | :----------------------- |
+| `201`           | Sucesso                  |
+| `400`           | Dados Inválidos          |
+| `409`           | Conflito de CPF ou Email |
 
 ##
 
-### 🚥 Endpoints - 🏋️‍♂️ Rotas de Login 
+### 🚥 Endpoints - 🏋️‍♂️ Rotas de Login
+
 #### S02 - Login
+
 ![LOGIN](https://i.imgur.com/rX0vQmD.png)
-![LOGOUT](https://i.imgur.com/t9xVOmP.png)
+
 ```http
    POST /api/login
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `email` | `string` |  **Obrigatório**. Email do usuário|
-| `password` | `string` | **Obrigatório**. Senha do usuário|
-
+| Parâmetro  | Tipo     | Descrição                         |
+| :--------- | :------- | :-------------------------------- |
+| `email`    | `string` | **Obrigatório**. Email do usuário |
+| `password` | `string` | **Obrigatório**. Senha do usuário |
 
 Request JSON exemplo
+
 ```http
   {
     "email": "drew@example.com",
@@ -138,6 +150,7 @@ Request JSON exemplo
 ```
 
 Resposta JSON exemplo
+
 ```http
   {
     "name": "Drew Vieira",
@@ -145,16 +158,44 @@ Resposta JSON exemplo
   }
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, retorna nome do usuário e token JWT|
-|  `400` | Dados inválidos|
-|  `401` | Credenciais inválidas|
+| Response Status | Descrição                                    |
+| :-------------- | :------------------------------------------- |
+| `200`           | Sucesso, retorna nome do usuário e token JWT |
+| `400`           | Dados inválidos                              |
+| `401`           | Credenciais inválidas                        |
+
+#### S02 - Logout
+
+![LOGOUT](https://i.imgur.com/t9xVOmP.png)
+
+```http
+   POST /api/logout
+```
+
+Não é necessário enviar parâmetros no body da requisição para este endpoint.
+
+Resposta JSON exemplo
+
+```http
+  {
+    "message": "Logout realizado com sucesso",
+    "status": 200,
+    "data": []
+  }
+```
+
+| Response Status | Descrição                                                        |
+| :-------------- | :--------------------------------------------------------------- |
+| `200`           | Sucesso, depois disso o token atual é deletado do banco de dados |
 
 ##
+
 ### 🚥 Endpoints - 🚴 Rotas de Dashboard
+
 #### S03 - Dashboard
+
 ![DASHBOARD](https://i.imgur.com/QT6gEPf.png)
+
 ```http
   GET /api/dashboard
 ```
@@ -162,6 +203,7 @@ Resposta JSON exemplo
 Não é necessário enviar parâmetros no body da requisição para este endpoint. A autenticação é realizada via token JWT.
 
 Resposta JSON exemplo (depende dos dados do usuário autenticado)
+
 ```http
   {
     "registered_students": 11,
@@ -172,44 +214,55 @@ Resposta JSON exemplo (depende dos dados do usuário autenticado)
 
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, retorna dados do dashboard do usuário|
-|  `500` | Erro interno|
+| Response Status | Descrição                                      |
+| :-------------- | :--------------------------------------------- |
+| `200`           | Sucesso, retorna dados do dashboard do usuário |
+| `500`           | Erro interno                                   |
 
 ##
+
 ### 🚥 Endpoints - 🏊‍♀️ Rotas de Exercícios
+
 #### S04 - Cadastro de Exercícios
+
 ![CADASTROEXERCICIO](https://i.imgur.com/tC2Fblk.png)
+
 ```http
    POST /api/exercises
 ```
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `description` | `string` |  **Obrigatório**. Descrição do exercício, máximo 255 caracteres|
+
+| Parâmetro     | Tipo     | Descrição                                                      |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `description` | `string` | **Obrigatório**. Descrição do exercício, máximo 255 caracteres |
 
 Request JSON exemplo
+
 ```http
   {
     "description": "Levantamento de peso"
   }
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `201` | Sucesso, exercício cadastrado|
-|  `400` | Dados inválidos|
-|  `409` | Exercício já cadastrado para o usuário|
+| Response Status | Descrição                              |
+| :-------------- | :------------------------------------- |
+| `201`           | Sucesso, exercício cadastrado          |
+| `400`           | Dados inválidos                        |
+| `409`           | Exercício já cadastrado para o usuário |
 
 ##
+
 #### S05 - Listagem de Exercícios
+
 ![LISTAREXERCICIO](https://i.imgur.com/xie1r8W.png)
+
 ```http
   GET /api/exercises
 ```
+
 Não é necessário enviar parâmetros no body da requisição. Ele vai listar os exercicios do usuario logado.
 
 Exemplo de response:
+
 ```http
   [
     {
@@ -227,50 +280,61 @@ Exemplo de response:
 
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, retorna lista de exercícios|
+| Response Status | Descrição                            |
+| :-------------- | :----------------------------------- |
+| `200`           | Sucesso, retorna lista de exercícios |
 
 ##
+
 #### S06 - Deleção de Exercícios
+
 ![DELETAREXERCICIO](https://i.imgur.com/sXoRCP7.png)
+
 ```http
     DELETE /api/exercises/:id
 ```
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id` | `int` |  **Obrigatório**. ID do exercício|
+
+| Parâmetro | Tipo  | Descrição                        |
+| :-------- | :---- | :------------------------------- |
+| `id`      | `int` | **Obrigatório**. ID do exercício |
 
 Não há response no body em caso de sucesso.
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `204` | Sucesso, exercício deletado|
-|  `403` | Ação não permitida|
-|  `404` | Exercício não encontrado|
+| Response Status | Descrição                   |
+| :-------------- | :-------------------------- |
+| `204`           | Sucesso, exercício deletado |
+| `403`           | Ação não permitida          |
+| `404`           | Exercício não encontrado    |
 
 ---
+
 ### 🚥 Endpoints - 🤸 Rotas de Estudantes
+
 #### S07 - Cadastro de Estudante
+
 ![CADASTROESTUDANTE](https://i.imgur.com/MgarUHX.png)
+
 ```http
   POST /api/students
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id`      | `int` | **Autoincremental**. Chave primaria |
-| `name` | `string` | **Obrigatório**. Nome do estudante|
-| `email` | `string` | **Obrigatório**. Email do estudante, único|
-| `date_birth` | `date` | **Obrigatório** Data de nascimento|
-| `cpf` | `string` | **Obrigatório**. CPF do estudante, único|
-| `contact` | `string` | **Obrigatório**. Contato do estudante|
-| `cep` | `string` | CEP do estudante (opcional)|
-| `street` | `string` | Rua do estudante (opcional)|
-| `... outros campos opcionais	` |  | |
-
+| Parâmetro                     | Tipo     | Descrição                                  |
+| :---------------------------- | :------- | :----------------------------------------- |
+| `id`                          | `int`    | **Autoincremental**. Chave primaria        |
+| `name`                        | `string` | **Obrigatório**. Nome do estudante         |
+| `email`                       | `string` | **Obrigatório**. Email do estudante, único |
+| `date_birth`                  | `date`   | **Obrigatório** Data de nascimento         |
+| `cpf`                         | `string` | **Obrigatório**. CPF do estudante, único   |
+| `contact`                     | `string` | **Obrigatório**. Contato do estudante      |
+| `cep`                         | `string` | CEP do estudante (opcional)                |
+| `street`                      | `string` | Rua do estudante (opcional)                |
+| `neighborhood`                      | `string` | Bairro do estudante (opcional)                |
+| `city`                      | `string` | Cidade do estudante (opcional)                |
+| `number`                      | `string` | Numero da residencia do estudante (opcional)                |
+| `complement`                      | `string` | Complemento da residencia do estudante (opcional)                |
 
 Request JSON exemplo
+
 ```http
   {
     "name": "Drew Vieira",
@@ -289,6 +353,7 @@ Request JSON exemplo
 ```
 
 Resposta JSON exemplo (depende dos dados do usuário autenticado)
+
 ```http
   {
     "id": 1,
@@ -310,16 +375,18 @@ Resposta JSON exemplo (depende dos dados do usuário autenticado)
 
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `201` | Sucesso, estudante cadastrado|
-|  `400` | Dados inválidos|
-|  `403` | Limite de cadastro atingido|
+| Response Status | Descrição                     |
+| :-------------- | :---------------------------- |
+| `201`           | Sucesso, estudante cadastrado |
+| `400`           | Dados inválidos               |
+| `403`           | Limite de cadastro atingido   |
 
 ##
 
 #### S08 - Listagem de Estudantes
+
 ![LISTARESTUDANTE](https://i.imgur.com/fIivojZ.png)
+
 ```http
   GET /api/students
 ```
@@ -327,6 +394,7 @@ Resposta JSON exemplo (depende dos dados do usuário autenticado)
 Não é necessário enviar parâmetros no body da requisição. Ele vai retornar apenas os estudantes registrados pelo usuario logado. É possivel usar a query para filtrar por nome, email ou cpf.
 
 Exemplo de Response:
+
 ```http
   [
     {
@@ -370,46 +438,54 @@ Exemplo de Response:
   ]
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, retorna lista de estudantes|
+| Response Status | Descrição                            |
+| :-------------- | :----------------------------------- |
+| `200`           | Sucesso, retorna lista de estudantes |
+
 ##
 
 #### S09 - Deleção de Estudante (Soft Delete)
+
 ![DELETARESTUDANTE](https://i.imgur.com/nbTEG30.png)
+
 ```http
   DELETE /api/students/:id
 ```
 
 Não é necessário enviar parâmetros no body da requisição.
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório**. ID do estudante na URL|
+| Parâmetro | Tipo  | Descrição                               |
+| :-------- | :---- | :-------------------------------------- |
+| `id`      | `int` | **Obrigatório**. ID do estudante na URL |
 
 Exemplo de Response:
+
 ```http
     (Nenhum conteúdo no corpo da resposta)
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `204` | Sucesso, estudante excluído|
-|  `403` | Não permitido excluir|
-|  `404` | Estudante não encontrado|
-
+| Response Status | Descrição                   |
+| :-------------- | :-------------------------- |
+| `204`           | Sucesso, estudante excluído |
+| `403`           | Não permitido excluir       |
+| `404`           | Estudante não encontrado    |
 
 ##
+
 #### S10 - Atualização de Estudante
+
 ![ATTESTUDANTE](https://i.imgur.com/1Wv6Sge.png)
+
 ```http
   PUT /api/students/:id
 ```
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório**. ID do estudante na URL|
+
+| Parâmetro | Tipo  | Descrição                               |
+| :-------- | :---- | :-------------------------------------- |
+| `id`      | `int` | **Obrigatório**. ID do estudante na URL |
 
 Exemplo de request JSON:
+
 ```http
     {
       "name": "Carlos Pereira",
@@ -419,6 +495,7 @@ Exemplo de request JSON:
 ```
 
 Exemplo de Response:
+
 ```http
   {
   "id": 5,
@@ -432,41 +509,43 @@ Exemplo de Response:
     "neighborhood": "Centro",
     "city": "Belo Horizonte",
     "number": "789"
+    }
   }
-}
 
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, estudante atualizado|
-|  `400` | Dados inválidos|
-|  `404` | Estudante não encontrado|
-
+| Response Status | Descrição                     |
+| :-------------- | :---------------------------- |
+| `200`           | Sucesso, estudante atualizado |
+| `400`           | Dados inválidos               |
+| `404`           | Estudante não encontrado      |
 
 ##
+
 ### 🚥 Endpoints - 🚣 Rotas de Treinos
-#### S11 -  Cadastro de Treino
+
+#### S11 - Cadastro de Treino
+
 ![CADASTROTREINO](https://i.imgur.com/N2z6efK.png)
+
 ```http
   POST /api/workouts
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id` | `int` | **Obrigatório**. número inteiro chave primaria|
-| `student_id` | `int` | **Obrigatório**.  ID do estudante|
-| `exercise_id` | `int` | **Obrigatório**.  ID do exercício|
-| `repetitions` | `int` | **Obrigatório**. Número de repetições|
-| `weight` | `numeric` | **Obrigatório**. Peso usado no exercício|
-| `break_time` | `int` | **Obrigatório**. Tempo de descanso (em segundos)|
-| `day` | `int` | **Obrigatório**. Dia da semana (enum: SEGUNDA, TERÇA, QUARTA, QUINTA, SEXTA, SÁBADO, DOMINGO)|
-| `observataions` | `int` | Observações sobre o treino|
-| `time` | `int` | **Obrigatório**. Duração do exercício (em minutos)|
-
-
+| Parâmetro       | Tipo      | Descrição                                                                                     |
+| :-------------- | :-------- | :-------------------------------------------------------------------------------------------- |
+| `id`            | `int`     | **Obrigatório**. número inteiro chave primaria                                                |
+| `student_id`    | `int`     | **Obrigatório**. ID do estudante                                                              |
+| `exercise_id`   | `int`     | **Obrigatório**. ID do exercício                                                              |
+| `repetitions`   | `int`     | **Obrigatório**. Número de repetições                                                         |
+| `weight`        | `numeric` | **Obrigatório**. Peso usado no exercício                                                      |
+| `break_time`    | `int`     | **Obrigatório**. Tempo de descanso (em segundos)                                              |
+| `day`           | `int`     | **Obrigatório**. Dia da semana (enum: SEGUNDA, TERÇA, QUARTA, QUINTA, SEXTA, SÁBADO, DOMINGO) |
+| `observataions` | `int`     | Observações sobre o treino                                                                    |
+| `time`          | `int`     | **Obrigatório**. Duração do exercício (em minutos)                                            |
 
 Request JSON exemplo
+
 ```http
   {
     "student_id": 1,
@@ -481,6 +560,7 @@ Request JSON exemplo
 ```
 
 Exemplo de Response:
+
 ```http
     {
         "student_id": 5,
@@ -497,21 +577,25 @@ Exemplo de Response:
     }
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `201` | Sucesso, treino cadastrado|
-|  `400` | Dados inválidos|
-|  `409` | Treino para o mesmo dia já cadastrado|
+| Response Status | Descrição                             |
+| :-------------- | :------------------------------------ |
+| `201`           | Sucesso, treino cadastrado            |
+| `400`           | Dados inválidos                       |
+| `409`           | Treino para o mesmo dia já cadastrado |
 
 ##
+
 #### S12 - Listagem de Treinos por Estudante
+
 ![LISTATREINOPORESTUDANTE](https://i.imgur.com/ZnsTXU7.png)
+
 ```http
   GET /api/students/:studentId/workouts
 ```
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `studentId` | `int` | **Obrigatório**. ID do estudante que vai na url|
+
+| Parâmetro   | Tipo  | Descrição                                       |
+| :---------- | :---- | :---------------------------------------------- |
+| `studentId` | `int` | **Obrigatório**. ID do estudante que vai na url |
 
 Exemplo de resposta:
 
@@ -541,14 +625,17 @@ Exemplo de resposta:
 }
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, retorna treinos do estudante|
-|  `404` | Estudante não encontrado|
+| Response Status | Descrição                             |
+| :-------------- | :------------------------------------ |
+| `200`           | Sucesso, retorna treinos do estudante |
+| `404`           | Estudante não encontrado              |
 
 ##
+
 #### S13 - Listagem de um Estudante
+
 ![LISTA1ESTUDANTE](https://i.imgur.com/6nF8Zmn.png)
+
 ```http
   GET /api/students/:id
 ```
@@ -556,8 +643,9 @@ Exemplo de resposta:
 Não é necessário enviar parâmetros no body da requisição.
 
 Exemplo de Response:
+
 ```http
-    {
+{
   "id": 5,
   "name": "Carlos Pereira",
   "email": "carlos.pereira@example.com",
@@ -571,61 +659,72 @@ Exemplo de Response:
     "neighborhood": "Centro",
     "city": "Belo Horizonte",
     "number": "789"
-  }
+    }
 }
 
 ```
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, retorna dados do estudante|
-|  `404` | Estudante não encontrado|
-
+| Response Status | Descrição                           |
+| :-------------- | :---------------------------------- |
+| `200`           | Sucesso, retorna dados do estudante |
+| `404`           | Estudante não encontrado            |
 
 ##
-#### S14 -  Exportação de PDF dos Treinos do Estudante
+
+#### S14 - Exportação de PDF dos Treinos do Estudante
 
 ```http
   GET /api/students/:id_do_estudante/export
 ```
+
 Request exemplo:
-| Parâmetro   | Tipo       | Descrição                           |
+| Parâmetro | Tipo | Descrição |
 | :---------- | :--------- | :---------------------------------- |
 | `id_do_estudante` | `int` | **Obrigatório**. ID do estudante|
 
 Não há response no body em caso de sucesso, o PDF é enviado como download.
 
-| Response Status       | Descrição                           |
-|  :--------- | :---------------------------------- |
-|  `200` | Sucesso, PDF dos treinos enviado|
-|  `404` | Estudante não encontrado|
+Aqui está um exemplo de um PDF exportado para teste.
+
+![PDFEXPORTADO](https://i.imgur.com/kyYwcDw.png)
+
+| Response Status | Descrição                        |
+| :-------------- | :------------------------------- |
+| `200`           | Sucesso, PDF dos treinos enviado |
+| `404`           | Estudante não encontrado         |
 
 ##
+
 #### 🏆 Projeto Avaliativo do Módulo 2 DEVinHouse[Zucchetti] - BACKEND
 
 ### 🚀 Melhorias que podem ser aplicadas 🚀
- 
+
 Possíveis Melhorias e Expansões para DEVinGYM API
 
-- Relatórios e Análises:
-Implementação de um sistema de geração de relatórios para fornecer análises detalhadas sobre a utilização da academia, frequência dos estudantes, etc..
+-   Relatórios e Análises:
+    Implementação de um sistema de geração de relatórios para fornecer análises detalhadas sobre a utilização da academia, frequência dos estudantes, etc..
 
-- Melhorias na Documentação da API:
-Aprimorar a documentação da API, utilizando ferramentas como Swagger, para oferecer uma documentação interativa.
+-   Melhorias na Documentação da API:
+    Aprimorar a documentação da API, utilizando ferramentas como Swagger, para oferecer uma documentação interativa.
 
-- Interface de Usuário/Administração:
-Desenvolvimento de uma interface web ou mobile para melhorar a experiência do usuário final e do administrador, tornando a interação com a API mais intuitiva e acessível.
+-   Interface de Usuário/Administração:
+    Desenvolvimento de uma interface web ou mobile para melhorar a experiência do usuário final e do administrador, tornando a interação com a API mais intuitiva e acessível.
 
 -Expansão de Funcionalidades:
 Adição de novas funcionalidades, como checklist nos exercicios que o estudante ja fez e acompanhamento do progresso físico dos estudantes.
 
 ##
-## Autor
 
-|        |                             |
-|  :--------- | :---------------------------------- |
-|  <img src="https://media.licdn.com/dms/image/D4D03AQHEKA_1us4z8g/profile-displayphoto-shrink_800_800/0/1699566513630?e=1708560000&v=beta&t=gBTtxoLnri1jD9ze8wxoxemiDl-jsaWCOGFUrYv_geo" width="50%" height="50%"/> | Andre (Drew) Leonardo Rocha Vieira :: [@vDr3w](https://www.github.com/vdr3w)|
+## Sobre Mim:
+
+|                                                                                                                                                                                                                   |                                                                              |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- |
+| <img src="https://media.licdn.com/dms/image/D4D03AQHEKA_1us4z8g/profile-displayphoto-shrink_800_800/0/1699566513630?e=1708560000&v=beta&t=gBTtxoLnri1jD9ze8wxoxemiDl-jsaWCOGFUrYv_geo" width="50%" height="50%"/> | Andre (Drew) Leonardo Rocha Vieira :: [@vDr3w](https://www.github.com/vdr3w) |
+
 ##
+
 ###
+
 #### BONUS PRA QUEM LEU ATÉ AQUI: Representação da DEVinGYM pela AI DALL-E 🤣❤
+
 ![DevInGym](https://i.imgur.com/zUET9ye.png)
