@@ -683,7 +683,7 @@ Não há response no body em caso de sucesso, o PDF é enviado como download.
 
 Aqui está um exemplo de um PDF exportado para teste.
 
-![PDFEXPORTADO](https://i.imgur.com/1Qr3kU1.png)
+![PDFEXPORTADO](https://i.imgur.com/kyYwcDw.png)
 
 | Response Status | Descrição                        |
 | :-------------- | :------------------------------- |
