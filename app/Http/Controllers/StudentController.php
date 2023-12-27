@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Workout;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -109,4 +111,83 @@ public function index(Request $request)
         return response()->json($student, Response::HTTP_OK);
     }
 
+    private function formatCpf($cpf)
+    {
+        $cpf = preg_replace("/\D/", '', $cpf);
+        return substr($cpf, 0, 3) . '.' .
+            substr($cpf, 3, 3) . '.' .
+            substr($cpf, 6, 3) . '-' .
+            substr($cpf, 9, 2);
+    }
+
+    private function formatContact($contact)
+    {
+        $contact = preg_replace("/\D/", '', $contact);
+        if (substr($contact, 0, 2) == '55') {
+            $contact = substr($contact, 2);
+        }
+        return '(' . substr($contact, 0, 2) . ') ' .
+            substr($contact, 2, 5) . '-' .
+            substr($contact, 7, 4);
+    }
+
+    private function formatCep($cep)
+    {
+        $cep = preg_replace("/\D/", '', $cep);
+        return substr($cep, 0, 2) . '.' .
+            substr($cep, 2, 3) . '-' .
+            substr($cep, 5, 3);
+    }
+
+    public function show($id)
+    {
+        $student = Student::find($id);
+
+        if (!$student) {
+            return response()->json(['error' => 'Estudante não encontrado'], Response::HTTP_NOT_FOUND);
+        }
+
+        $response = [
+                'id' => $student->id,
+                'name' => $student->name,
+                'email' => $student->email,
+                'date_birth' => $student->date_birth,
+                'cpf' => $this->formatCpf($student->cpf),
+                'contact' => $this->formatContact($student->contact),
+                'address' => [
+                    'cep' => $this->formatCep($student->cep),
+                    'street' => $student->street,
+                    'province' => $student->state,
+                    'neighborhood' => $student->neighborhood,
+                    'city' => $student->city,
+                    'complement' => $student->complement,
+                    'number' => $student->number
+            ]
+        ];
+
+        return response()->json($response, Response::HTTP_OK);
+    }
+
+public function exportPDF($id_do_estudante)
+{
+    $student = Student::with('workouts')->find($id_do_estudante);
+
+    if (!$student) {
+        return response()->json(['error' => 'Estudante não encontrado'], Response::HTTP_NOT_FOUND);
+    }
+
+    // Consulta todos os workouts relacionados a este estudante
+    $workouts = Workout::where('student_id', $id_do_estudante)->get();
+
+    // Para fins de depuração, você pode exibir os treinos no log
+    foreach ($workouts as $workout) {
+        \Log::info('Dia: ' . $workout->day);
+        \Log::info('Descrição do Exercício: ' . $workout->exercise->description);
+        // Adicione mais informações relevantes aqui, conforme necessário
+    }
+
+    $pdf = Pdf::loadView('pdf.student', compact('student', 'workouts'));
+    return $pdf->download('treino-' . $student->name . '.pdf');
 }
+
+    }

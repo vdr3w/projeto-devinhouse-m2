@@ -9,7 +9,7 @@ use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\DashboardController;
 
 Route::middleware('auth:sanctum')->group(function () {
-// rotas privadas
+// ROTAS PRIVADAS
 
 //LOGOUT
 Route::post('logout', [AuthController::class, 'logout']);
@@ -24,16 +24,18 @@ Route::delete('exercises/{id}', [ExerciseController::class, 'destroy']);
 
 //ESTUDANTES
 Route::get('students', [StudentController::class, 'index']);
+Route::get('students/{id}', [StudentController::class, 'show']);
 Route::delete('students/{id}', [StudentController::class, 'destroy']);
 Route::put('students/{id}', [StudentController::class, 'update']);
 Route::post('students', [StudentController::class, 'store'])->middleware('validateLimitStudents');
+
+//PDF
+Route::get('students/export/{id_do_estudante}', [StudentController::class, 'exportPDF']);
 
 //WORKOUTS
 Route::post('workouts', [WorkoutController::class, 'store']);
 Route::get('students/{id}/workouts', [WorkoutController::class, 'indexByStudent']);
 });
-
-// Rotas públicas que somente depois ficaram privadas
 
 //USER
 Route::post('users', [UserController::class, 'store']);
