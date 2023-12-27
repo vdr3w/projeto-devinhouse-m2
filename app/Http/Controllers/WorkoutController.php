@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Workout;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,19 +23,24 @@ class WorkoutController extends Controller
             'time' => 'required|integer'
         ]);
 
-        // Verifica se já existe um treino para o mesmo dia
-        $existingWorkout = Workout::where('student_id', $validatedData['student_id'])
-                                ->where('day', $validatedData['day'])
-                                ->first();
+// Obtém a descrição do exercício pelo ID
+    $exerciseDescription = Exercise::where('id', $validatedData['exercise_id'])->first()->description;
 
-        if ($existingWorkout) {
-            return response()->json(['error' => 'Treino para o mesmo dia já cadastrado'], Response::HTTP_CONFLICT);
-        }
+    // Verifica se já existe um treino para o mesmo dia com o mesmo exercício (por descrição)
+    $existingWorkout = Workout::whereHas('exercise', function ($query) use ($exerciseDescription) {
+                                $query->where('description', $exerciseDescription);
+                            })
+                            ->where('student_id', $validatedData['student_id'])
+                            ->where('day', $validatedData['day'])
+                            ->first();
 
-        $workout = Workout::create($validatedData);
-        return response()->json($workout, Response::HTTP_CREATED);
+    if ($existingWorkout) {
+        return response()->json(['error' => "Exercício '{$exerciseDescription}' para o mesmo dia já cadastrado para este aluno"], Response::HTTP_CONFLICT);
+    }
 
-        return response()->json($workout, Response::HTTP_CREATED);
+    // Cria um novo treino se não existir conflito
+    $workout = Workout::create($validatedData);
+    return response()->json($workout, Response::HTTP_CREATED);
     }
 
     public function indexByStudent($studentId)
@@ -89,5 +95,4 @@ class WorkoutController extends Controller
         $pdf = Pdf::loadView('pdf.student', compact('student', 'workouts'));
         return $pdf->download('treino-' . $student->name . '.pdf')->stream('relatorio.pdf');
     }
-
 }
