@@ -39,6 +39,9 @@ O projeto segue uma estrutura de camadas, dividido em models, controllers e rout
 Utilização do PostgreSQL para gerenciamento de dados.
 ![App Screenshot](https://i.imgur.com/uRUpVp2.png)
 
+### VIDEO-DEMONSTRATIVO 🔄
+https://drive.google.com/drive/u/0/folders/1lbTbtonFR4Tw8K5LnxTEcimiF8Tg-rz3
+
 ### Cronograma e Organização
 
 Planejamento e execução do projeto de acordo com um cronograma estabelecido.
