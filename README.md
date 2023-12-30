@@ -40,7 +40,7 @@ Utilização do PostgreSQL para gerenciamento de dados.
 ![App Screenshot](https://i.imgur.com/uRUpVp2.png)
 
 ### VIDEO-DEMONSTRATIVO 🔄
-https://drive.google.com/drive/u/0/folders/1lbTbtonFR4Tw8K5LnxTEcimiF8Tg-rz3
+https://drive.google.com/file/d/1rV2VToFbCy5yJiAcual00JxSdbEWU0Ar/view
 
 ### Cronograma e Organização
 
