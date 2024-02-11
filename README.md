@@ -11,10 +11,6 @@ O projeto foi desenvolvido utilizando:
 -   PHP com Laravel 10
 -   Banco de dados PostgreSQL
 
-### Vídeo Demonstrativo:
-
-link
-
 Principais dependências externas:
 
 | Plugin     | Utilização                                 |
